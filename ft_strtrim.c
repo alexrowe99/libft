@@ -33,6 +33,8 @@ char	*ft_strtrim(const char *s1, const char *set)
 	if (end == -1)
 		return (ft_strdup(""));
 	trim = (char *)malloc(end - start);
+	if (!trim)
+		return (NULL);
 	i = 0;
 	while (start <= end && end != -1)
 	{

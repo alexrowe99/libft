@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-static unsigned int	ft_abs_i(int n)
+static unsigned int ft_abs_i(int n)
 {
 	if (n < 0)
 	{
@@ -9,7 +9,7 @@ static unsigned int	ft_abs_i(int n)
 	return (n);
 }
 
-static void	ft_neg_or_pos(int n, char *dest, int *len, int *end)
+static void ft_neg_or_pos(int n, char *dest, int *len, int *end)
 {
 	free(dest);
 	if (n < 0)
@@ -28,14 +28,16 @@ static void	ft_neg_or_pos(int n, char *dest, int *len, int *end)
 	}
 }
 
-char	*ft_itoa(int n)
+char *ft_itoa(int n)
 {
-	char			*dest;
-	unsigned int	absolute_nb;
-	int				len;
-	int				end;
+	char *dest;
+	unsigned int absolute_nb;
+	int len;
+	int end;
 
 	dest = (char *)malloc(1);
+	if (!dest)
+		return (NULL);
 	absolute_nb = ft_abs_i(n);
 	len = 0;
 	end = 0;
@@ -46,6 +48,8 @@ char	*ft_itoa(int n)
 	}
 	absolute_nb = ft_abs_i(n);
 	ft_neg_or_pos(n, dest, &len, &end);
+	if (!dest)
+		return (NULL);
 	while (len >= end)
 	{
 		dest[len--] = (absolute_nb % 10) + '0';

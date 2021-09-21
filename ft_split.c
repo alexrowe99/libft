@@ -43,6 +43,8 @@ char	**ft_split(const char *s, char c)
 		i++;
 	}
 	split = (char **)malloc(sizeof(char *) * (k + 2));
+	if (!split)
+		return (NULL);
 	k = ft_fillsplit(s, c, split, len);
 	split[k] = NULL;
 	return (split);
