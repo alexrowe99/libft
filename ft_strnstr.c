@@ -1,16 +1,5 @@
 #include <stddef.h>
-
-static size_t	ft_strlen_sns(const char *str)
-{
-	size_t	len;
-
-	len = 0;
-	while (str[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
-}
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t n)
 {
@@ -31,7 +20,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t n)
 					break ;
 				j++;
 			}
-			if (j == ft_strlen_sns(little))
+			if (j == ft_strlen(little))
 				return ((char *)big + i);
 		}
 		i++;

@@ -1,17 +1,5 @@
-#include <stddef.h>
 #include <stdlib.h>
-
-static size_t	ft_strlen_st(const char *str)
-{
-	size_t	len;
-
-	len = 0;
-	while (str[len] != '\0')
-	{
-		len++;
-	}
-	return (len);
-}
+#include "libft.h"
 
 static int	ft_inset(const char *set, char c)
 {
@@ -27,29 +15,6 @@ static int	ft_inset(const char *set, char c)
 	return (0);
 }
 
-static char	*ft_strcpy_st(char *dest, const char *src)
-{
-	int	ctr;
-
-	ctr = 0;
-	while (src[ctr])
-	{
-		dest[ctr] = src[ctr];
-		ctr++;
-	}
-	dest[ctr] = '\0';
-	return (dest);
-}
-
-static char	*ft_strdup_st(const char *src)
-{
-	char	*new_str;
-
-	new_str = (char *)malloc(sizeof(src));
-	ft_strcpy_st(new_str, src);
-	return (new_str);
-}
-
 char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*trim;
@@ -58,7 +23,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int		end;
 
 	start = 0;
-	end = ft_strlen_st(s1) - 1;
+	end = ft_strlen(s1) - 1;
 	while (ft_inset(set, s1[start]))
 		start++;
 	if (start == (end + 1))
@@ -66,7 +31,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 	while (ft_inset(set, s1[end]))
 		end--;
 	if (end == -1)
-		return (ft_strdup_st(""));
+		return (ft_strdup(""));
 	trim = (char *)malloc(end - start);
 	i = 0;
 	while (start <= end && end != -1)
