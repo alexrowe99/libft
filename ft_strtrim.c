@@ -32,15 +32,14 @@ char	*ft_strtrim(const char *s1, const char *set)
 		end--;
 	if (end == -1)
 		return (ft_strdup(""));
-	trim = (char *)malloc(end - start);
+	trim = (char *)malloc(sizeof(char) * ((end - start) + 1));
 	if (!trim)
 		return (NULL);
 	i = 0;
 	while (start <= end && end != -1)
 	{
-		trim[i] = s1[start];
-		i++;
-		start++;
+		trim[i++] = s1[start++];
 	}
+	trim[i] = '\0';
 	return (trim);
 }

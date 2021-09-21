@@ -12,11 +12,13 @@ static int	ft_fillsplit(const char *str, char c, char **split, int len)
 	while (i < len)
 	{
 		j = 0;
-		while (str[i + j] != c)
+		while (str[i + j] != c && str[i + j])
 			j++;
 		if (j != 0)
 		{
-			split[k] = (char *)malloc(j);
+			split[k] = (char *)malloc(sizeof(char) * (j + 1));
+			if (!split[k])
+				return (-1);
 			ft_strlcpy(split[k], &str[i], j + 1);
 			k++;
 		}
@@ -29,11 +31,9 @@ static int	ft_fillsplit(const char *str, char c, char **split, int len)
 char	**ft_split(const char *s, char c)
 {
 	char	**split;
-	int		len;
 	int		i;
 	int		k;
 
-	len = ft_strlen(s);
 	i = 0;
 	k = 0;
 	while (s[i])
@@ -45,7 +45,9 @@ char	**ft_split(const char *s, char c)
 	split = (char **)malloc(sizeof(char *) * (k + 2));
 	if (!split)
 		return (NULL);
-	k = ft_fillsplit(s, c, split, len);
+	k = ft_fillsplit(s, c, split, i);
+	if (k == -1)
+		return (NULL);
 	split[k] = NULL;
 	return (split);
 }

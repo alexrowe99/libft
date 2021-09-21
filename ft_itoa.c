@@ -1,6 +1,6 @@
 #include <stdlib.h>
 
-static unsigned int ft_abs_i(int n)
+static unsigned int	ft_abs_i(int n)
 {
 	if (n < 0)
 	{
@@ -9,35 +9,39 @@ static unsigned int ft_abs_i(int n)
 	return (n);
 }
 
-static void ft_neg_or_pos(int n, char *dest, int *len, int *end)
+static char	*ft_neg_or_pos(int n, int *len, int *end)
 {
-	free(dest);
+	char	*s;
+	char	first;
+	int		size;
+
 	if (n < 0)
 	{
 		*end = 1;
-		dest = (char *)malloc(*len + 2);
-		dest[0] = '-';
-		(*len)++;
+		size = *len + 2;
+		first = '-';
 	}
-	else if (n > 0)
-		dest = (char *)malloc(*len + 1);
 	else
 	{
-		dest = (char *)malloc(1);
-		dest[0] = '0';
+		size = *len + 1;
+		first = ' ';
 	}
+	s = (char *)malloc(size);
+	if (!s)
+		return (NULL);
+	s[0] = first;
+	if (n < 0)
+		(*len)++;
+	return (s);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
-	char *dest;
-	unsigned int absolute_nb;
-	int len;
-	int end;
+	char			*dest;
+	unsigned int	absolute_nb;
+	int				len;
+	int				end;
 
-	dest = (char *)malloc(1);
-	if (!dest)
-		return (NULL);
 	absolute_nb = ft_abs_i(n);
 	len = 0;
 	end = 0;
@@ -47,7 +51,7 @@ char *ft_itoa(int n)
 		len++;
 	}
 	absolute_nb = ft_abs_i(n);
-	ft_neg_or_pos(n, dest, &len, &end);
+	dest = ft_neg_or_pos(n, &len, &end);
 	if (!dest)
 		return (NULL);
 	while (len >= end)

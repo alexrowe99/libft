@@ -10,7 +10,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	len1 = ft_strlen(s1);
 	len2 = ft_strlen(s2);
-	join = (char *)malloc(sizeof(char)*(len1 + len2 + 1));
+	join = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
 	if (!join)
 		return (0);
 	i = 0;

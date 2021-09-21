@@ -7,7 +7,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	unsigned int	i;
 	size_t			j;
 
-	sub = (char *)malloc(sizeof(char)*(len + 1));
+	sub = (char *)malloc(sizeof(char) * (len + 1));
 	if (!sub)
 		return (0);
 	i = start;
@@ -21,4 +21,3 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	sub[j] = '\0';
 	return (sub);
 }
-

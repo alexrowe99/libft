@@ -10,7 +10,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	while (s[i])
 		i++;
 	len = i;
-	new_str = (char *)malloc(sizeof(char)*(len + 1));
+	new_str = (char *)malloc(sizeof(char) * (len + 1));
 	if (!new_str)
 		return (NULL);
 	i = 0;
