@@ -18,10 +18,6 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS)
 
-so:
-	$(CC) -fPIC -c $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
-
 clean:
 	$(RM) $(OBJS) $(BONUS_OBJS)
 
