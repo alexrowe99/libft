@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 t_list	*contents(t_list *lst, t_list *new_iter,
 	t_list *new, void (*del)(void *))
