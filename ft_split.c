@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 static int	ft_fillsplit(const char *str, char c, char **split, int len)
@@ -45,8 +46,6 @@ char	**ft_split(const char *s, char c)
 	int		i;
 	int		k;
 
-	if (!s)
-		return (NULL);
 	i = 0;
 	k = 0;
 	while (s[i])

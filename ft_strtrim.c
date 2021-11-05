@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
 static int	ft_inset(const char *set, char c)
@@ -33,8 +34,6 @@ char	*ft_strtrim(const char *s1, const char *set)
 	int		start;
 	int		end;
 
-	if (!s1 || !set)
-		return (NULL);
 	start = 0;
 	end = ft_strlen(s1) - 1;
 	while (ft_inset(set, s1[start]))
@@ -45,7 +44,7 @@ char	*ft_strtrim(const char *s1, const char *set)
 		end--;
 	if (end == -1)
 		return (ft_strdup(""));
-	trim = malloc(sizeof(char) * (end - start + 1));
+	trim = (char *)malloc(sizeof(char) * ((end - start) + 1));
 	if (!trim)
 		return (NULL);
 	i = 0;
