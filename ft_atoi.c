@@ -10,13 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
-{
-	return (c == ' ' || c == '\n'
-		|| c == '\t' || c == '\v'
-		|| c == '\f' || c == '\r');
-}
-
 int	ft_atoi(const char *str)
 {
 	int	index;
@@ -26,7 +19,9 @@ int	ft_atoi(const char *str)
 	index = 0;
 	res = 1;
 	temp = 0;
-	while (ft_isspace(str[index]))
+	while (str[index] == ' ' || str[index] == '\n'
+		|| str[index] == '\t' || str[index] == '\v'
+		|| str[index] == '\f' || str[index] == '\r')
 		index++;
 	if (str[index] == '+' || str[index] == '-')
 	{
@@ -36,12 +31,9 @@ int	ft_atoi(const char *str)
 	}
 	while (str[index] >= '0' && str[index] <= '9')
 	{
-		if ((temp > temp * 10
-				|| temp > (temp * 10) + (str[index] - '0'))
-			&& ((temp * 10) + (str[index] - '0')) * -1 != -2147483648)
-			return (-1);
 		temp *= 10;
-		temp += (str[index++] - '0');
+		temp += (str[index] - '0');
+		index++;
 	}
 	return (temp * res);
 }
